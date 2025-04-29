@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Help Center</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="floating-music"></div>
+
+  <section class="contact-section">
+    <div class="container">
+      <h1>🎟 Help Center 🎟</h1>
+      <p>Welcome to our Help Center! Here you can find answers about booking tickets, payment issues, and more.</p>
+
+      <div class="contact-buttons">
+        <button onclick="location.href='mailto:essamkhusruf@gmail.com'">📧 Email Us: essamkhusruf@gmail.com</button>
+        <button onclick="location.href='tel:01200366674'">📞 Call Us: 01200366674</button>
+        <button onclick="location.href='contact.html'">⬅ Back to Contact Page</button>
+      </div>
+
+      <div class="music-decorations">
+        🎶 🎵 🎶 🎵 🎶
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Floating music notes
+    const musicDiv = document.getElementById('floating-music');
+    function createNote() {
+      const note = document.createElement('div');
+      note.className = 'note';
+      note.innerText = '🎵';
+      note.style.left = Math.random() * 100 + 'vw';
+      note.style.animationDuration = 5 + Math.random() * 5 + 's';
+      musicDiv.appendChild(note);
+      setTimeout(() => musicDiv.removeChild(note), 10000);
+    }
+    setInterval(createNote, 800);
+  </script>
+</body>
+</html>

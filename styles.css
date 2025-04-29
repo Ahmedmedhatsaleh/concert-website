@@ -1,0 +1,135 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #000;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.contact-section {
+  padding: 50px 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: #111;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  color: #ff0000;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.apology {
+  text-align: center;
+  font-size: 1.2em;
+  color: #ffffff;
+  margin-bottom: 30px;
+  min-height: 70px;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-buttons button {
+  background: #ff0000;
+  border: none;
+  color: #ffffff;
+  padding: 15px 25px;
+  font-size: 1.1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  width: 80%;
+  max-width: 300px;
+}
+
+.contact-buttons button:hover {
+  background: #cc0000;
+  transform: scale(1.05);
+}
+
+.chat-box {
+  display: none;
+  background: #222;
+  border: 2px solid #ff0000;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.chat-box textarea {
+  width: 100%;
+  height: 120px;
+  background: #111;
+  border: 1px solid #ff4d4d;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  resize: none;
+  font-size: 1em;
+}
+
+.chat-box button {
+  margin-top: 10px;
+  background: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.chat-box button:hover {
+  background: #cc0000;
+}
+
+.music-decorations {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2em;
+  color: #ff0000;
+  opacity: 0.4;
+}
+
+#floating-music {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.note {
+  position: absolute;
+  bottom: 0;
+  font-size: 24px;
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}

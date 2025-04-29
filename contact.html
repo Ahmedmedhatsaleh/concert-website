@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Customer Service</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="floating-music"></div>
+
+  <section class="contact-section">
+    <div class="container">
+      <h1>🎵 Contact Customer Service 🎵</h1>
+      <p id="apology" class="apology"></p>
+
+      <div class="contact-buttons">
+        <button onclick="location.href='mailto:essamkhuhsruf@gmail.com'">📧 Email Us</button>
+        <button onclick="location.href='tel:01200366674'">📞 Call Us</button>
+        <button onclick="openChat()">💬 Live Chat</button>
+        <button onclick="location.href='help-center.html'">🎟 Visit Help Center</button>
+      </div>
+
+      <div id="chat-box" class="chat-box">
+        <h4>🎵 Live Chat Support 🎵</h4>
+        <textarea id="chat-message" placeholder="Type your message here..."></textarea>
+        <button onclick="closeChat()">Close Chat</button>
+      </div>
+
+      <div class="music-decorations">
+        🎶 🎵 🎶 🎵 🎶
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Typing effect for apology message
+    const apologyText = "We sincerely apologize for any inconvenience. Our team is ready to assist you with a smile and a beat!";
+    let i = 0;
+    function typeApology() {
+      if (i < apologyText.length) {
+        document.getElementById("apology").innerHTML += apologyText.charAt(i);
+        i++;
+        setTimeout(typeApology, 40);
+      }
+    }
+    window.onload = typeApology;
+
+    // Open chat with auto-message
+    function openChat() {
+      document.getElementById('chat-box').style.display = 'block';
+      document.getElementById('chat-message').value = "Hi, how can we help you?";
+    }
+    function closeChat() {
+      document.getElementById('chat-box').style.display = 'none';
+    }
+
+    // Floating music notes
+    const musicDiv = document.getElementById('floating-music');
+    function createNote() {
+      const note = document.createElement('div');
+      note.className = 'note';
+      note.innerText = '🎵';
+      note.style.left = Math.random() * 100 + 'vw';
+      note.style.animationDuration = 5 + Math.random() * 5 + 's';
+      musicDiv.appendChild(note);
+      setTimeout(() => musicDiv.removeChild(note), 10000);
+    }
+    setInterval(createNote, 800);
+  </script>
+</body>
+</html>

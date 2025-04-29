@@ -1,0 +1,83 @@
+/* Body and Page Background */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+}
+
+/* Top Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: #ff0000;
+    border-radius: 5px;
+}
+
+/* Background Image */
+.background {
+    background-image: url('concertimage.jpg'); /* Change this to your preferred image */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+/* Home Content */
+.home-content {
+    max-width: 800px;
+    margin: 120px auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 60px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+    color: #ff0000;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* Link to Artists Section */
+.link-to-artists a {
+    color: #ff0000;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-to-artists a:hover {
+    text-decoration: underline;
+}

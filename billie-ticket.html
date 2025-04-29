@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Billie Eilish - Book Tickets</title>
+  <link rel="stylesheet" href="billie-ticket.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    .ticket-options {
+      display: flex;
+      justify-content: space-between;
+    }
+    .ticket-tier {
+      text-align: center;
+    }
+    .ticket-tier select {
+      margin-top: 10px;
+    }
+    .total-cost {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .book-now-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+    .book-now-btn:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="ticket-container">
+    <div class="ticket-box">
+      <h1>Billie Eilish: Happier Than Ever Tour</h1>
+      <p class="date">September 15 2025 - Arena Stadium</p>
+      <div class="ticket-options">
+        <div class="ticket-tier">
+          <h2>General Admission</h2>
+          <p class="price">EGP 400</p>
+          <select class="ticket-quantity" data-price="400">
+            <option value="0">Select Quantity</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="ticket-tier">
+          <h2>Golden Circle</h2>
+          <p class="price">EGP 800</p>
+          <select class="ticket-quantity" data-price="800">
+            <option value="0">Select Quantity</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="ticket-tier">
+          <h2>VIP Zone</h2>
+          <p class="price">EGP 1500</p>
+          <select class="ticket-quantity" data-price="1500">
+            <option value="0">Select Quantity</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+      </div>
+      <p class="note">* Limited tickets available. Secure yours now!</p>
+      <p class="total-cost">Total Cost: EGP 0</p>
+      <button class="book-now-btn">Book Now</button>
+    </div>
+  </div>
+
+  <script>
+    function updateTotalCost() {
+      const ticketOptions = document.querySelectorAll('.ticket-quantity');
+      let totalCost = 0;
+      let generalQuantity = 0, goldenQuantity = 0, vipQuantity = 0;
+
+      ticketOptions.forEach(option => {
+        const quantity = parseInt(option.value);
+        const price = parseInt(option.getAttribute('data-price'));
+        totalCost += quantity * price;
+
+        // Store ticket quantities
+        if (option.closest('.ticket-tier').querySelector('h2').textContent === 'General Admission') {
+          generalQuantity = quantity;
+        } else if (option.closest('.ticket-tier').querySelector('h2').textContent === 'Golden Circle') {
+          goldenQuantity = quantity;
+        } else if (option.closest('.ticket-tier').querySelector('h2').textContent === 'VIP Zone') {
+          vipQuantity = quantity;
+        }
+      });
+
+      document.querySelector('.total-cost').textContent = `Total Cost: EGP ${totalCost}`;
+
+      // Redirect when clicking the "Book Now" button
+      const bookNowButton = document.querySelector('.book-now-btn');
+      bookNowButton.onclick = function () {
+        window.location.href = `billiefinal.html?general=${generalQuantity}&golden=${goldenQuantity}&vip=${vipQuantity}&totalCost=${totalCost}`;
+      };
+    }
+
+    // Call the updateTotalCost function when any ticket quantity changes
+    const ticketSelectors = document.querySelectorAll('.ticket-quantity');
+    ticketSelectors.forEach(selector => {
+      selector.addEventListener('change', updateTotalCost);
+    });
+  </script>
+</body>
+</html>

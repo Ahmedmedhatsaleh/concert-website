@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(to bottom right, #000000, #1a1a1a);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.ticket-container {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.767); /* Changed to green for Billie Eilish */
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+}
+
+.ticket-box h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #00ff00; /* Green for Billie Eilish */
+}
+
+.date {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.ticket-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ticket-tier {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #00ff00; /* Green border for Billie Eilish */
+}
+
+.ticket-tier h2 {
+    margin: 0 0 10px 0;
+    font-size: 1.3em;
+}
+
+.price {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.book-btn {
+    background-color: #00ff00; /* Green for Billie Eilish */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-btn:hover {
+    background-color: #00cc00; /* Darker green for hover effect */
+}
+
+.note {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #888;
+}

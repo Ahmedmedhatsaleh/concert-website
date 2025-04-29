@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A$AP Rocky - Book Tickets</title>
+  <link rel="stylesheet" href="asap-ticket.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    .ticket-options {
+      display: flex;
+      justify-content: space-between;
+    }
+    .ticket-tier {
+      text-align: center;
+    }
+    .ticket-tier select {
+      margin-top: 10px;
+    }
+    .total-cost {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .book-now-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+    .book-now-btn:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <div class="ticket-container">
+    <div class="ticket-box">
+      <h1>A$AP Rocky: Testing Tour</h1>
+      <p class="date">August 28 2025 - Pyramids Grand Venue</p>
+      <div class="ticket-options">
+        <div class="ticket-tier">
+          <h2>General Admission</h2>
+          <p class="price">EGP 500</p>
+          <select class="ticket-quantity" data-price="500">
+            <option value="0">Select Quantity</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="ticket-tier">
+          <h2>Golden Circle</h2>
+          <p class="price">EGP 1000</p>
+          <select class="ticket-quantity" data-price="1000">
+            <option value="0">Select Quantity</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="ticket-tier">
+          <h2>VIP Zone</h2>
+          <p class="price">EGP 2000</p>
+          <select class="ticket-quantity" data-price="2000">
+            <option value="0">Select Quantity</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+      </div>
+      <p class="note">* Limited tickets available. Secure yours now!</p>
+      <p class="total-cost">Total Cost: EGP 0</p>
+      <button class="book-now-btn" onclick="redirectToFinal()">Book Now</button>
+    </div>
+  </div>
+
+  <script>
+    function updateTotalCost() {
+      const ticketOptions = document.querySelectorAll('.ticket-quantity');
+      let totalCost = 0;
+
+      ticketOptions.forEach(option => {
+        const quantity = parseInt(option.value);
+        const price = parseInt(option.getAttribute('data-price'));
+        totalCost += quantity * price;
+      });
+
+      document.querySelector('.total-cost').textContent = `Total Cost: EGP ${totalCost}`;
+    }
+
+    const ticketSelectors = document.querySelectorAll('.ticket-quantity');
+    ticketSelectors.forEach(selector => {
+      selector.addEventListener('change', updateTotalCost);
+    });
+
+    function redirectToFinal() {
+      window.location.href = 'asapfinal.html';
+    }
+  </script>
+</body>
+</html>

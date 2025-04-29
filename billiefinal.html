@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Billie Eilish - Payment Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #111;
+      border-radius: 10px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .ticket-summary {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .ticket-summary p {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+
+    .total-cost {
+      font-weight: bold;
+      margin-top: 20px;
+      font-size: 1.3em;
+    }
+
+    .payment-form {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .payment-form label {
+      font-size: 1.1em;
+      margin-bottom: 10px;
+    }
+
+    .payment-form input {
+      padding: 15px;
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #444;
+      color: #fff;
+    }
+
+    .submit-btn {
+      background-color: #000;
+      color: #fff;
+      padding: 15px;
+      font-size: 1.2em;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: #444;
+    }
+
+    .back-btn {
+      background-color: #444;
+      color: #fff;
+      padding: 15px;
+      font-size: 1.2em;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Billie Eilish: Happier Than Ever Tour - Payment Details</h1>
+
+    <div class="ticket-summary">
+      <p><strong>General Admission:</strong> <span id="general-quantity"></span> tickets</p>
+      <p><strong>Golden Circle:</strong> <span id="golden-quantity"></span> tickets</p>
+      <p><strong>VIP Zone:</strong> <span id="vip-quantity"></span> tickets</p>
+      <p class="total-cost">Total Cost: EGP <span id="total-cost"></span></p>
+    </div>
+
+    <div class="payment-form">
+      <h2>Enter Payment Information</h2>
+      <form action="submit-payment.php" method="POST">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="card">Card Number:</label>
+        <input type="text" id="card" name="card" required />
+
+        <label for="expiry">Expiry Date:</label>
+        <input type="text" id="expiry" name="expiry" required />
+
+        <button type="submit" class="submit-btn">Submit Payment</button>
+      </form>
+    </div>
+
+    <button class="back-btn" onclick="window.history.back()">Back to Tickets</button>
+  </div>
+
+  <script>
+    // Retrieve ticket data from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const generalQuantity = urlParams.get('general');
+    const goldenQuantity = urlParams.get('golden');
+    const vipQuantity = urlParams.get('vip');
+    const totalCost = urlParams.get('totalCost');
+
+    // Display ticket details
+    document.getElementById('general-quantity').textContent = generalQuantity;
+    document.getElementById('golden-quantity').textContent = goldenQuantity;
+    document.getElementById('vip-quantity').textContent = vipQuantity;
+    document.getElementById('total-cost').textContent = totalCost;
+  </script>
+</body>
+</html>

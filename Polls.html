@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EMS Voting & Feedback</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+      color: #eee;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      margin-bottom: 30px;
+      font-size: 36px;
+    }
+    #artists {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .artist {
+      background-color: #1e1e1e;
+      padding: 20px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 220px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .artist:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(255, 0, 0, 0.5);
+    }
+    .artist img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .artist p {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 0;
+    }
+    .vote-btn {
+      margin: 10px;
+      padding: 12px 24px;
+      background-color: #ff2323;
+      border: none;
+      color: white;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .vote-btn:hover {
+      background-color: #e60000;
+    }
+    .hidden {
+      display: none;
+    }
+    #thank-you {
+      margin-top: 50px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+    #feedback-section {
+      margin-top: 30px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .star-rating {
+      margin-top: 15px;
+    }
+    .star-rating span {
+      font-size: 32px;
+      cursor: pointer;
+      color: grey;
+      transition: color 0.3s;
+    }
+    .star-rating .checked {
+      color: gold;
+    }
+    textarea {
+      margin-top: 20px;
+      width: 80%;
+      height: 100px;
+      border-radius: 10px;
+      padding: 15px;
+      border: 1px solid #333;
+      background-color: #111;
+      color: #fff;
+      font-size: 16px;
+      resize: none;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Vote for Your Favorite Artist</h1>
+
+  <div id="artists">
+    <div class="artist" data-artist="A$AP Rocky">
+      <img src="https://via.placeholder.com/220x220?text=A$AP+Rocky" alt="A$AP Rocky">
+      <p>A$AP Rocky</p>
+    </div>
+    <div class="artist" data-artist="Billie Eilish">
+      <img src="https://via.placeholder.com/220x220?text=Billie+Eilish" alt="Billie Eilish">
+      <p>Billie Eilish</p>
+    </div>
+    <div class="artist" data-artist="Travis Scott">
+      <img src="https://via.placeholder.com/220x220?text=Travis+Scott" alt="Travis Scott">
+      <p>Travis Scott</p>
+    </div>
+  </div>
+
+  <div id="thank-you" class="hidden">
+    <h2>Thank you for voting!</h2>
+    <div id="feedback-prompt">
+      <p>Would you like to leave feedback?</p>
+      <button class="vote-btn" id="yes-feedback">Yes</button>
+      <button class="vote-btn" id="no-feedback">No</button>
+    </div>
+  </div>
+
+  <div id="feedback-section" class="hidden">
+    <h2>Feedback</h2>
+    <textarea id="feedback-text" placeholder="Write your feedback..."></textarea>
+    <div class="star-rating" id="star-rating">
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+    </div>
+    <button class="vote-btn" id="submit-feedback">Submit Feedback</button>
+  </div>
+
+  <script>
+    let selectedArtist = "";
+    let starRating = 0;
+
+    const artists = document.querySelectorAll('.artist');
+    artists.forEach(artist => {
+      artist.addEventListener('click', function() {
+        selectedArtist = this.getAttribute('data-artist');
+        console.log(`Voted for: ${selectedArtist}`);
+        document.getElementById('artists').classList.add('hidden');
+        document.getElementById('thank-you').classList.remove('hidden');
+      });
+    });
+
+    document.getElementById('yes-feedback').addEventListener('click', function() {
+      document.getElementById('thank-you').classList.add('hidden');
+      document.getElementById('feedback-section').classList.remove('hidden');
+    });
+
+    document.getElementById('no-feedback').addEventListener('click', function() {
+      alert("Thank you! Your vote was submitted.");
+      location.reload();
+    });
+
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+      star.addEventListener('click', function() {
+        starRating = index + 1;
+        stars.forEach((s, i) => {
+          if (i <= index) {
+            s.classList.add('checked');
+          } else {
+            s.classList.remove('checked');
+          }
+        });
+      });
+    });
+
+    document.getElementById('submit-feedback').addEventListener('click', function() {
+      const feedbackText = document.getElementById('feedback-text').value;
+      if (feedbackText || starRating > 0) {
+        console.log("Feedback submitted:", {
+          artist: selectedArtist,
+          feedback: feedbackText,
+          rating: starRating
+        });
+        alert("Thank you for your feedback!");
+        location.reload();
+      } else {
+        alert("Please give feedback or a rating!");
+      }
+    });
+  </script>
+
+</body>
+</html>

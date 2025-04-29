@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>     
+  <meta charset="UTF-8">     
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+  <title>EmailJS Example</title>     
+  <style>         
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-container {
+      width: 350px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .signup-container h2 {
+      color: #FF2323;
+      margin-bottom: 20px;
+    }
+
+    .signup-container input,
+    .signup-container select {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .signup-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #FF2323;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .signup-container button:hover {
+      background-color: #e00000;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .footer p {
+      color: #999;
+    }
+  </style>
+</head> 
+<body>      
+
+  <div class="signup-container">
+    <h2>Send Reminder</h2>      
+    <form id="form">         
+      <input type="text" id="name" name="user_name" placeholder="Your name" required><br>         
+      <input type="email" id="email" name="to_email" placeholder="Your email" required><br>
+      
+      <select id="concert" name="event_name" required>
+        <option value="">-- Select a Concert --</option>
+        <option value="A$ap Rocky - Testing tour">A$ap Rocky - Testing tour</option>
+        <option value="Billie Eilish - Happier than ever">Billie Eilish - Happier than ever</option>
+        <option value="Travis Scott - Circuis maximus tour">Travis Scott - Circuis maximus tour</option>
+      </select><br>
+
+      <input type="hidden" id="event_date" name="event_date" value="soon">
+      
+      <button type="submit">Send Reminder</button>     
+    </form> 
+
+    <div class="footer">         
+      <p>Powered by EmailJS</p>     
+    </div>  
+  </div>
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    // Initialize EmailJS
+    (function() {
+      emailjs.init("Imp0GMJCvCPoAWKpR"); // Your EmailJS public key
+    })();
+
+    // Update the hidden event_date field based on selected concert
+    function updateEventDate() {
+      const concertSelect = document.getElementById('concert');
+      const selectedConcert = concertSelect.value;
+      const eventDateInput = document.getElementById('event_date');
+
+      let date = "soon"; // Default value
+
+      switch (selectedConcert) {
+        case "A$ap Rocky - Testing tour":
+          date = "August 28, 2025";
+          break;
+        case "Billie Eilish - Happier than ever":
+          date = "September 15, 2025";
+          break;
+        case "Travis Scott - Circuis maximus tour":
+          date = "August 28, 2025";
+          break;
+        default:
+          date = "soon";
+      }
+
+      eventDateInput.value = date;
+    }
+
+    // Update event_date whenever the concert selection changes
+    document.getElementById('concert').addEventListener('change', updateEventDate);
+
+    // Handle form submit
+    document.getElementById('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      updateEventDate(); // Ensure date is updated before sending
+
+      emailjs.sendForm('service_1fm6any', 'template_1ecekj8', this)
+        .then(function() {
+          const email = document.getElementById('email').value;
+          const concert = document.getElementById('concert').value;
+          alert('Reminder for "' + concert + '" sent to ' + email);
+          document.getElementById('form').reset();
+        }, function(error) {
+          console.log('Error:', error);
+          alert('Failed to send the reminder');
+        });
+    });
+  </script>
+
+</body> 
+</html>

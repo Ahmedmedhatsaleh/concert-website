@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Event Itinerary</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .itinerary-container {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .event-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .event-header h1 {
+      margin-bottom: 10px;
+      color: #FF2323;
+    }
+    .event-header p {
+      margin: 5px 0;
+      font-size: 16px;
+      color: #666;
+    }
+    .session {
+      border-left: 4px solid #FF2323;
+      padding-left: 15px;
+      margin: 20px 0;
+    }
+    .session h3 {
+      margin: 0;
+      font-size: 20px;
+      color: #222;
+    }
+    .session p {
+      margin: 5px 0;
+      font-size: 15px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<div class="itinerary-container">
+  <div class="event-header">
+    <h1>Music Festival 2025</h1>
+    <p><strong>Date:</strong> June 10–12, 2025</p>
+    <p><strong>Location:</strong> New Cairo, Egypt</p>
+  </div>
+
+  <div class="session">
+    <h3>Opening Ceremony</h3>
+    <p><strong>Time:</strong> 10:00 AM – 11:00 AM</p>
+    <p><strong>Location:</strong> Main Stage</p>
+  </div>
+
+  <div class="session">
+    <h3>Billie Eilish Live</h3>
+    <p><strong>Time:</strong> 1:00 PM – 2:30 PM</p>
+    <p><strong>Location:</strong> Red Arena</p>
+  </div>
+
+  <div class="session">
+    <h3>Travis Scott - Cactus Jack Show</h3>
+    <p><strong>Time:</strong> 4:00 PM – 5:30 PM</p>
+    <p><strong>Location:</strong> Black Stage</p>
+  </div>
+
+  <div class="session">
+    <h3>Afterparty DJ Night</h3>
+    <p><strong>Time:</strong> 8:00 PM – 11:00 PM</p>
+    <p><strong>Location:</strong> Skyline Lounge</p>
+  </div>
+
+</div>
+
+</body>
+</html>

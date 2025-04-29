@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post-Event Reporting and Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Import Chart.js -->
+
+  <style>
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #111;
+      border-radius: 10px;
+    }
+    h1, h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .chart-container {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 40px;
+    }
+    canvas {
+      background-color: #333;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .analysis {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 40px;
+    }
+    .analysis p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Post-Event Reporting and Analytics</h1>
+
+  <!-- Engagement Chart -->
+  <div class="chart-container">
+    <h2>Attendee Satisfaction</h2>
+    <canvas id="satisfactionChart"></canvas>
+  </div>
+
+  <!-- Financial Chart -->
+  <div class="chart-container">
+    <h2>Financial Performance</h2>
+    <canvas id="financialChart"></canvas>
+  </div>
+
+  <!-- Event Success Analysis -->
+  <div class="analysis">
+    <h2>Event Success Analysis</h2>
+    <p><strong>Overall Feedback:</strong> 85% of attendees rated the event as 4 or 5 stars.</p>
+    <p><strong>Financial Overview:</strong> Revenue exceeded expectations by 18% compared to forecasted sales.</p>
+    <p><strong>Improvement Suggestions:</strong> 
+      <ul>
+        <li>Expand the VIP Zone capacity by 15% for future events.</li>
+        <li>Introduce more food and drink stalls near the Golden Circle area.</li>
+        <li>Enhance social media promotions earlier before ticket launch dates.</li>
+      </ul>
+    </p>
+  </div>
+</div>
+
+<script>
+  // Satisfaction Chart
+  const ctx1 = document.getElementById('satisfactionChart').getContext('2d');
+  const satisfactionChart = new Chart(ctx1, {
+    type: 'bar',
+    data: {
+      labels: ['1 Star', '2 Stars', '3 Stars', '4 Stars', '5 Stars'],
+      datasets: [{
+        label: 'Number of Attendees',
+        data: [10, 25, 40, 70, 150],
+        backgroundColor: ['#ff4c4c', '#ff944c', '#ffe14c', '#94ff4c', '#4cffaa']
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  // Financial Chart
+  const ctx2 = document.getElementById('financialChart').getContext('2d');
+  const financialChart = new Chart(ctx2, {
+    type: 'pie',
+    data: {
+      labels: ['General Admission', 'Golden Circle', 'VIP Zone'],
+      datasets: [{
+        label: 'Revenue Share',
+        data: [50000, 80000, 120000],
+        backgroundColor: ['#4c6aff', '#ff4cf8', '#4cffd2']
+      }]
+    },
+    options: {
+      responsive: true
+    }
+  });
+</script>
+
+</body>
+</html>
